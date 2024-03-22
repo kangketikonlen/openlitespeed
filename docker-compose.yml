@@ -1,0 +1,24 @@
+version: '3'
+services:
+  litespeed:
+    container_name: webserver
+    platform: linux/amd64
+    image: 'litespeedtech/openlitespeed:1.7.19-lsphp81'
+    volumes:
+      - './lsws/conf:/usr/local/lsws/conf'
+      - './lsws/admin-conf:/usr/local/lsws/admin/conf'
+      - './sites:/var/www/vhosts/'
+      - './logs:/usr/local/lsws/logs/'
+    networks:
+      - default
+    ports:
+      - '${HTTP_PORT}:80'
+      - '${HTTPS_PORT}:443'
+      - '${PANEL_PORT}:7080'
+    environment:
+      TZ: '${TimeZone}'
+    restart: always
+networks:
+  default:
+    name: server
+    driver: bridge
