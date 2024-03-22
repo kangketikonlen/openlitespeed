@@ -3,7 +3,7 @@ services:
   litespeed:
     container_name: webserver
     platform: linux/amd64
-    image: 'litespeedtech/openlitespeed:1.7.19-lsphp81'
+    image: 'litespeedtech/openlitespeed:1.7.19-lsphp74'
     volumes:
       - './lsws/conf:/usr/local/lsws/conf'
       - './lsws/admin-conf:/usr/local/lsws/admin/conf'
